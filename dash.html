@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard de Doações - Comunidade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <header>
+            <div class="logo">DC</div>
+            <div>
+                <h1>Doações — Comunidade</h1>
+                <p class="lead">Crie e gerencie doações facilmente. Os dados ficam salvos localmente no navegador.</p>
+            </div>
+        </header>
+
+        <main class="card">
+            <div class="section-title">
+                <h2>Dados da Doação</h2>
+                <div class="small">Preencha o que for possível — obrigatório: item e quantidade</div>
+            </div>
+
+            <form id="donationForm">
+                <div>
+                    <label>Itens a doar</label>
+                    <div class="items-list" id="itemsList">
+                        <!-- item rows injected here -->
+                    </div>
+                    <div style="margin-top:8px;display:flex;gap:8px">
+                        <button type="button" class="btn" id="addItemBtn">➕ Adicionar item</button>
+                        <button type="button" class="btn ghost" id="clearItemsBtn">Limpar itens</button>
+                    </div>
+                </div>
+
+                <hr style="border:none;height:12px">
+
+                <div>
+                    <label>Endereço para retirada</label>
+                    <div class="row">
+                        <div style="flex:1">
+                            <label class="small">CEP</label>
+                            <input type="text" id="cep" placeholder="00000-000" />
+                        </div>
+                        <div style="flex:3">
+                            <label class="small">Rua / Logradouro</label>
+                            <input type="text" id="rua" placeholder="Ex: Rua Domingos" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div style="flex:2">
+                            <label class="small">Bairro</label>
+                            <input type="text" id="bairro" placeholder="Ex: Centro" />
+                        </div>
+                        <div style="flex:2">
+                            <label class="small">Cidade</label>
+                            <input type="text" id="cidade" placeholder="Ex: São Paulo" />
+                        </div>
+                        <div style="flex:1">
+                            <label class="small">Estado</label>
+                            <input type="text" id="estado" placeholder="RS" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div style="flex:1">
+                            <label class="small">Número</label>
+                            <input type="text" id="numero" placeholder="Ex: 123" />
+                        </div>
+                        <div style="flex:2">
+                            <label class="small">Complemento</label>
+                            <input type="text" id="complemento" placeholder=" Ex: Casa" />
+                        </div>
+                    </div>
+
+                    <div style="margin-top:8px">
+                        <label class="small">Observações sobre o local</label>
+                        <textarea id="obs" placeholder="Ex: Casa a direita"></textarea>
+                    </div>
+                </div>
+
+                <!-- Toast container -->
+                <div id="toastContainer"
+                    style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>
+
+                <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+                    <button type="submit" class="btn">Salvar doação</button>
+                </div>
+
+            </form>
+        </main>
+
+        <aside class="aside">
+            <div class="card summary">
+                <h3>Resumo</h3>
+                <div class="preview" id="preview">
+                    <div class="muted">Nenhuma doação adicionada ainda.</div>
+                </div>
+
+                <div class="meta" style="margin-top:12px">
+                    <div class="chip" id="totalItems">0 itens</div>
+                    <div class="chip" id="totalWeight">0 kg/l</div>
+                </div>
+
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
