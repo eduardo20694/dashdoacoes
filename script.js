@@ -168,14 +168,18 @@ donationForm.addEventListener('submit', async e => {
   formData.forEach((value, key) => enderecoData[key] = value);
 
   // Montando objeto para enviar no formato que o backend espera
-  const dataToSend = {
-    ...enderecoData, // nome, endereco, cidade, estado, cep
-    items: items.map(it => ({
-      nome_item: it.name,
-      quantidade: it.qty,
-      unidade: it.unit
-    }))
-  };
+ const dataToSend = {
+  nome: enderecoData.nome || '',
+  endereco: enderecoData.endereco || '',
+  cidade: enderecoData.cidade || '',
+  estado: enderecoData.estado || '',
+  cep: enderecoData.cep || '',
+  items: items.map(it => ({
+    nome_item: it.name,
+    quantidade: it.qty,
+    unidade: it.unit
+  }))
+};
 
   try {
     const res = await fetch('https://backdoacoes-production.up.railway.app/donation', {
