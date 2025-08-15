@@ -178,7 +178,7 @@ donationForm.addEventListener('submit', async e => {
   };
 
   try {
-    const res = await fetch('https://SEU_BACKEND_URL/donation', {
+    const res = await fetch('https://backdoacoes-production.up.railway.app/donation', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dataToSend)
