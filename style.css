@@ -297,3 +297,28 @@ footer {
   from { width: 100%; }
   to { width: 0%; }
 }
+
+.login-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+.login-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--accent), #7c3aed);
+    color: #021124;
+    font-weight: 600;
+    text-decoration: none; /* remove sublinhado */
+    transition: 0.2s;
+}
+
+.login-btn:hover {
+    filter: brightness(1.1);
+    text-decoration: none; /* garante que não apareça sublinhado no hover */
+}
+

@@ -12,9 +12,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
   if (username === userFake && password === passFake) {
     errorMessage.style.color = "green";
     errorMessage.textContent = "Login realizado com sucesso!";
-    setTimeout(() => {
-      window.location.href = ""; // redireciona para outra página
-    }, 1500);
+    
   } else {
     errorMessage.style.color = "red";
     errorMessage.textContent = "Usuário ou senha incorretos!";
