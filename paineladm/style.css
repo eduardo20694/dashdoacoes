@@ -1,0 +1,215 @@
+:root {
+  --bg: #0f172a;       /* dark blue */
+  --card: #0b1220;     /* dark card */
+  --accent: #06b6d4;   /* cyan */
+  --muted: #94a3b8;
+  --glass: rgba(255,255,255,0.03);
+  --success: #10b981;
+  --danger: #ef4444;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg,#071129 0%, #071026 60%), var(--bg);
+  color: #e6eef8;
+}
+
+/* Layout básico (admin não tem aside) */
+.app {
+  max-width: 980px;
+  margin: 36px auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #021124;
+}
+
+h1 { font-size: 20px; margin: 0; }
+p.lead { margin: 0; color: var(--muted); font-size: 13px; }
+
+.card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.section-title h2 { margin: 0; font-size: 16px; }
+.small { font-size: 12px; color: var(--muted); }
+
+/* Botões (se usar no topo depois) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--accent), #7c3aed);
+  color: #021124;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+.btn:hover { filter: brightness(1.1); }
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--muted);
+}
+
+/* ====== Lista de Doações ====== */
+#listaDoacoes {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Card de doação */
+.doacao-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 4px 12px rgba(2,6,23,0.6);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, border-color 0.2s ease;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.doacao-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.8);
+  background: var(--glass);
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* Cabeçalho do card */
+.doacao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.doacao-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.doacao-header input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+.doacao-nome {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #e6eef8;
+  letter-spacing: .2px;
+}
+
+/* Badge de status */
+.doacao-status {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(6,182,212,0.15);
+  color: var(--accent);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  border: 1px solid rgba(6,182,212,0.25);
+}
+.concluido-status {
+  background: rgba(16,185,129,0.15);
+  color: var(--success);
+  border-color: rgba(16,185,129,0.25);
+}
+
+/* Linha de resumo (itens/quantidade) */
+.doacao-resumo {
+  margin-left: 28px;
+  margin-top: 6px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pill {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+/* Info extra (expande) */
+.doacao-info {
+  margin-top: 12px;
+  margin-left: 28px;
+  display: none;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  border-left: 2px solid rgba(255,255,255,0.06);
+  padding-left: 12px;
+  animation: fadeIn 0.25s ease forwards;
+}
+.doacao-info p { margin: 4px 0; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Estado concluído */
+.concluido .doacao-nome {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+.concluido { border-color: rgba(16,185,129,0.25); }
+
+/* Estado vazio */
+.empty-state {
+  background: rgba(255,255,255,0.02);
+  border: 1px dashed rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 18px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .doacao-header { align-items: flex-start; }
+  .doacao-header-left { align-items: flex-start; }
+}
